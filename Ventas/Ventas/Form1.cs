@@ -19,7 +19,7 @@ namespace Ventas
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Hola Mundo");
+            MessageBox.Show("<<Lo que nos hace grandes es el hecho de poder ver lo pequeños que somos.>>");
         }
     }
 }
