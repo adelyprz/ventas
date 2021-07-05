@@ -80,7 +80,7 @@ namespace Win.Rentas
 
             if (idTextBox.Text != "")
             {
-                if (resultado == DialogResult.OK)
+                if (resultado == DialogResult.Yes)
                 {
                     var id = Convert.ToInt32(idTextBox.Text);
                     Eliminar(id);
