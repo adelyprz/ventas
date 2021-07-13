@@ -35,6 +35,7 @@ namespace Win.Rentas
             {
                 listaProductosBindingSource.ResetBindings(false);
                 DeshabilitarBotones_habilitarBotones(true);
+                MessageBox.Show("Se han guardado los cambios");
             }
 
             else
