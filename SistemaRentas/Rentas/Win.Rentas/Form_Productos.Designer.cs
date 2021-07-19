@@ -35,7 +35,6 @@
             System.Windows.Forms.Label idLabel;
             System.Windows.Forms.Label precioLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Productos));
-            this.listaProductosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.listaProductosBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
@@ -55,14 +54,20 @@
             this.existenciaTextBox = new System.Windows.Forms.TextBox();
             this.idTextBox = new System.Windows.Forms.TextBox();
             this.precioTextBox = new System.Windows.Forms.TextBox();
+            this.listaProductosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.fotoPictureBox = new System.Windows.Forms.PictureBox();
+            this.btn_agregFoto = new System.Windows.Forms.Button();
+            this.btn_removFoto = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             activoLabel = new System.Windows.Forms.Label();
             descripcionLabel = new System.Windows.Forms.Label();
             existenciaLabel = new System.Windows.Forms.Label();
             idLabel = new System.Windows.Forms.Label();
             precioLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.listaProductosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.listaProductosBindingNavigator)).BeginInit();
             this.listaProductosBindingNavigator.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.listaProductosBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fotoPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // activoLabel
@@ -110,10 +115,6 @@
             precioLabel.TabIndex = 9;
             precioLabel.Text = "Precio:";
             // 
-            // listaProductosBindingSource
-            // 
-            this.listaProductosBindingSource.DataSource = typeof(BL.Rentas.Producto);
-            // 
             // listaProductosBindingNavigator
             // 
             this.listaProductosBindingNavigator.AddNewItem = null;
@@ -141,7 +142,7 @@
             this.listaProductosBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.listaProductosBindingNavigator.Name = "listaProductosBindingNavigator";
             this.listaProductosBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.listaProductosBindingNavigator.Size = new System.Drawing.Size(504, 25);
+            this.listaProductosBindingNavigator.Size = new System.Drawing.Size(673, 25);
             this.listaProductosBindingNavigator.TabIndex = 0;
             this.listaProductosBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -295,11 +296,53 @@
             this.precioTextBox.Size = new System.Drawing.Size(205, 20);
             this.precioTextBox.TabIndex = 10;
             // 
+            // listaProductosBindingSource
+            // 
+            this.listaProductosBindingSource.DataSource = typeof(BL.Rentas.Producto);
+            // 
+            // fotoPictureBox
+            // 
+            this.fotoPictureBox.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.fotoPictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.listaProductosBindingSource, "Foto", true, System.Windows.Forms.DataSourceUpdateMode.Never));
+            this.fotoPictureBox.Location = new System.Drawing.Point(414, 28);
+            this.fotoPictureBox.Name = "fotoPictureBox";
+            this.fotoPictureBox.Size = new System.Drawing.Size(211, 207);
+            this.fotoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.fotoPictureBox.TabIndex = 12;
+            this.fotoPictureBox.TabStop = false;
+            // 
+            // btn_agregFoto
+            // 
+            this.btn_agregFoto.Location = new System.Drawing.Point(414, 262);
+            this.btn_agregFoto.Name = "btn_agregFoto";
+            this.btn_agregFoto.Size = new System.Drawing.Size(93, 23);
+            this.btn_agregFoto.TabIndex = 13;
+            this.btn_agregFoto.Text = "Agregar Foto";
+            this.btn_agregFoto.UseVisualStyleBackColor = true;
+            this.btn_agregFoto.Click += new System.EventHandler(this.btn_agregFoto_Click);
+            // 
+            // btn_removFoto
+            // 
+            this.btn_removFoto.Location = new System.Drawing.Point(535, 262);
+            this.btn_removFoto.Name = "btn_removFoto";
+            this.btn_removFoto.Size = new System.Drawing.Size(90, 23);
+            this.btn_removFoto.TabIndex = 14;
+            this.btn_removFoto.Text = "Remover Foto";
+            this.btn_removFoto.UseVisualStyleBackColor = true;
+            this.btn_removFoto.Click += new System.EventHandler(this.btn_removFoto_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.Filter = "jpg, png | *.jpg; *.png";
+            // 
             // Form_Productos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(504, 271);
+            this.ClientSize = new System.Drawing.Size(673, 323);
+            this.Controls.Add(this.btn_removFoto);
+            this.Controls.Add(this.btn_agregFoto);
+            this.Controls.Add(this.fotoPictureBox);
             this.Controls.Add(activoLabel);
             this.Controls.Add(this.activoCheckBox);
             this.Controls.Add(descripcionLabel);
@@ -313,10 +356,11 @@
             this.Controls.Add(this.listaProductosBindingNavigator);
             this.Name = "Form_Productos";
             this.Text = "Productos";
-            ((System.ComponentModel.ISupportInitialize)(this.listaProductosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.listaProductosBindingNavigator)).EndInit();
             this.listaProductosBindingNavigator.ResumeLayout(false);
             this.listaProductosBindingNavigator.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.listaProductosBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fotoPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -344,5 +388,9 @@
         private System.Windows.Forms.TextBox idTextBox;
         private System.Windows.Forms.TextBox precioTextBox;
         private System.Windows.Forms.ToolStripButton toolStripButtonCancelar;
+        private System.Windows.Forms.PictureBox fotoPictureBox;
+        private System.Windows.Forms.Button btn_agregFoto;
+        private System.Windows.Forms.Button btn_removFoto;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

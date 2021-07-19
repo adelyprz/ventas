@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BL.Rentas;
+using System.IO;
 
 namespace Win.Rentas
 {
@@ -28,6 +29,17 @@ namespace Win.Rentas
         {
             listaProductosBindingSource.EndEdit();
             var producto = (Producto)listaProductosBindingSource.Current;
+
+            if (fotoPictureBox.Image != null)
+            {
+                producto.Foto = Program.imageToByteArray(fotoPictureBox.Image);
+            }
+
+            else
+            {
+                producto.Foto = null;
+            }
+
 
             var resultado = _productos.GuardarProducto(producto);
 
@@ -109,6 +121,35 @@ namespace Win.Rentas
         {
             DeshabilitarBotones_habilitarBotones(true);
             Eliminar(0);
+        }
+
+        private void btn_agregFoto_Click(object sender, EventArgs e)
+        {
+            var producto = (Producto)listaProductosBindingSource.Current;
+
+            if (producto != null)
+            {
+                openFileDialog1.ShowDialog();
+
+                var archivo = openFileDialog1.FileName;
+                if (archivo != "")
+                {
+                    var fileinfo = new FileInfo(archivo);
+                    var fileStream = fileinfo.OpenRead();
+
+                    fotoPictureBox.Image = Image.FromStream(fileStream);
+                }
+            }
+            
+            else
+            {
+                MessageBox.Show("Debe crear un producto antes de asignar una imagen");
+            }
+        }
+
+        private void btn_removFoto_Click(object sender, EventArgs e)
+        {
+            fotoPictureBox.Image = null;
         }
     }
 }
