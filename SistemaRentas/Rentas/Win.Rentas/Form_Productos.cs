@@ -15,6 +15,8 @@ namespace Win.Rentas
     public partial class Form_Productos : Form
     {
         ProductosBL _productos;
+        CategoriasBL _categorias;
+        TiposBL _tipos;
 
         public Form_Productos()
         {
@@ -22,6 +24,12 @@ namespace Win.Rentas
 
             _productos = new ProductosBL();
             listaProductosBindingSource.DataSource = _productos.ObtenerProductos();
+
+            _categorias = new CategoriasBL();
+            listaCategoriasBindingSource.DataSource = _categorias.ObtenerCategorias();
+
+            _tipos = new TiposBL();
+            listaTiposBindingSource.DataSource = _tipos.ObtenerTipos();
         }
 
         //Boton de guardar productos
@@ -117,10 +125,12 @@ namespace Win.Rentas
                 }
             }
 
+        //Cancelar ingreso de datos
         private void toolStripButtonCancelar_Click(object sender, EventArgs e)
         {
+            _productos.CancelarCambios();
             DeshabilitarBotones_habilitarBotones(true);
-            Eliminar(0);
+            
         }
 
         private void btn_agregFoto_Click(object sender, EventArgs e)

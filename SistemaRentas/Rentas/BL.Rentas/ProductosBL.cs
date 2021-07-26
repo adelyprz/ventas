@@ -28,6 +28,16 @@ namespace BL.Rentas
 
             return ListaProductos;
         }
+        
+        //Cancelar ingreso de datos
+        public void CancelarCambios()
+        {
+            foreach (var item in _contexto.ChangeTracker.Entries())
+            {
+                item.State = EntityState.Unchanged;
+                item.Reload();
+            }
+        }
 
         public Resultado GuardarProducto(Producto producto)
         {
@@ -87,11 +97,31 @@ namespace BL.Rentas
                 resultado.Exitoso = false;
             }
 
+            if (producto.TipoId < 0)
+            {
+                resultado.Mensaje = "Debe seleccionar un tipo de producto";
+                resultado.Exitoso = false;
+            }
+
+            //Validacion extra si no es un videojuego no selecciona una categoria propia
+            if (producto.TipoId != 3)
+            {
+                producto.CategoriaId = 6;
+            }
+
+            if (producto.CategoriaId < 0)
+            {
+                resultado.Mensaje = "Debe seleccionar una categoria";
+                resultado.Exitoso = false;
+            }
+
+            
+
             return resultado;
         }
 
     }
-    
+
 
     public class Producto
     {
@@ -100,6 +130,10 @@ namespace BL.Rentas
         public byte[] Foto { get; set; }
         public double Precio { get; set; }
         public int Existencia { get; set; }
+        public int CategoriaId { get; set; }
+        public Categoria Categoria { get; set; }
+        public int TipoId { get; set; }
+        public Tipo Tipo { get; set; }
         public bool Activo { get; set; }
     }
 
