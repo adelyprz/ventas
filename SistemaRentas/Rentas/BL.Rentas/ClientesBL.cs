@@ -42,8 +42,17 @@ namespace BL.Rentas
             public Resultado GuardarCliente(Cliente cliente)
             {
                 var resultado = Validar(cliente);
+                resultado.Exitoso = true;
 
-                if (resultado.Exitoso == false)
+                if (cliente == null)
+                {
+                    resultado.Mensaje = "Agregue un cliente valido";
+                    resultado.Exitoso = false;
+
+                    return resultado;
+                }
+
+            if (resultado.Exitoso == false)
                 {
                     return resultado;
                 }

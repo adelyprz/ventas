@@ -66,6 +66,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormFactura.Designer.cs">
+      <DependentUpon>FormFactura.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormReporte_Clientes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +122,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormFactura.resx">
+      <DependentUpon>FormFactura.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormReporte_Clientes.resx">
       <DependentUpon>FormReporte_Clientes.cs</DependentUpon>
     </EmbeddedResource>
@@ -153,6 +162,7 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\BL.Rentas.CategoriasBL.datasource" />
     <None Include="Properties\DataSources\BL.Rentas.ClientesBL.datasource" />
+    <None Include="Properties\DataSources\BL.Rentas.FacturaBL.datasource" />
     <None Include="Properties\DataSources\BL.Rentas.Producto.datasource" />
     <None Include="Properties\DataSources\BL.Rentas.ProductosBL.datasource" />
     <None Include="Properties\DataSources\BL.Rentas.SeguridadBL.datasource" />
