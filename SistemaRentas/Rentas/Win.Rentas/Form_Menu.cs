@@ -70,7 +70,7 @@ namespace Win.Rentas
 
         private void reporteDeVentasToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            var FormReporte_Ventas = new FormReporte_Ventas();
+            var FormReporte_Ventas = new FormReporte_Factura();
             FormReporte_Ventas.MdiParent = this;
             FormReporte_Ventas.Show();
         }
@@ -80,6 +80,13 @@ namespace Win.Rentas
             var Form_Facturas = new FormFactura();
             Form_Facturas.MdiParent = this;
             Form_Facturas.Show();
+        }
+
+        private void reporteDeFacturaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var Form_Reporte_Facturas = new FormReporte_Facturas();
+            Form_Reporte_Facturas.MdiParent = this;
+            Form_Reporte_Facturas.Show();
         }
     }
 }

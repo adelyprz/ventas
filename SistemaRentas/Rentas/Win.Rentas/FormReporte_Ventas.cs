@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BL.Rentas;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,9 +11,9 @@ using System.Windows.Forms;
 
 namespace Win.Rentas
 {
-    public partial class FormReporte_Ventas : Form
+    public partial class FormReporte_Factura : Form
     {
-        public FormReporte_Ventas()
+        public FormReporte_Factura()
         {
             InitializeComponent();
         }
